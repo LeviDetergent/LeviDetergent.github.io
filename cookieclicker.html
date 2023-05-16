@@ -34,8 +34,10 @@ h1 {
 
 p {
   margin-top: 0;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-bottom: 30px;
-  text-align: justify;
+  text-align: center;
   text-justify: inter-word;
   padding: 0 20px;
   font-size: 20px;
@@ -43,12 +45,12 @@ p {
 }
 
 .artist-icon {
-  float: left;
-  margin-left: 20px;
-  margin-right: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 20px;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   height: auto;
 }
 
@@ -68,6 +70,11 @@ p {
   width: 100%;
   max-width: 500px;
   height: auto;
+}
+	
+hr.nav{
+  border: 1px solid #EDF0F5;
+  width: 90%
 }
 
 @media (max-width: 768px) {
@@ -97,20 +104,13 @@ p {
   .images {
     flex-direction: column;
   }
-  
-  .code-example {
-	background-color: #f2f2f2;
-	border: 1px solid #ccc;
-	padding: 10px;
-	margin-bottom: 20px;
-  }
 }
 </style>
 </head>
 <body>
 <center>
 <div class="container-fluid">
-<h1 class="text-bg-light rounded"><b> Cookie Clicker P5.js <br> 2023</b></h1>
+<h1 class="text-bg-light rounded"><b>Dat Ngo</b></h1>
 <a href="index.html">Digital Media &nbsp; &nbsp; &nbsp; &nbsp;</a>
 <a href="2ddesign.html">2D Design and Color Concept &nbsp; &nbsp; &nbsp; &nbsp;</a>
 <a href="illustration.html">Illustration &nbsp; &nbsp; &nbsp;</a>
@@ -118,13 +118,17 @@ p {
 <a href="about.html">About Me &nbsp; &nbsp; &nbsp;</a>
 <a href="statement.html"> Statement</a>
 <br>
-<br>
+<hr class="nav">
+<h1 style= "color:#EDF0F5"><b> Cookie Clicker with p5.js <br> 2023</b></h1>
 </div>
-
+</center>
+<center>
+<p style="font-size: 20px;">This is a simple idle clicker game that takes inspiration from Cookie Clicker. In the game, you click on a cookie to earn points, and you can use those points to buy upgrades that increase your click multiplier or enable auto-clicking. As you level up, your upgrades will become more powerful but also more expensive. 
+Often used by artists to create artworks or even video games.</p>
 <img class="artist-icon rounded" src="cookieclicker.png" alt="ps">
 
 <a href="cookie/index.html"> Click here to try </a>
-
+<br>
 <div class="code-example">
 	<textarea style="border: 2px solid #212529; background-color: #212529; color: #EDF0F5;" rows="20" cols="90" style="overflow: auto;">
  var score = 0;
@@ -304,13 +308,6 @@ function windowResized() {
   buyAutoClickBtn.position(width / 2 - 100, height / 2 + 120);
 }
 </textarea>
-<br>
-<br>
-<br>
-<center>
-<p style="font-size: 20px;">This is a simple idle clicker game that takes inspiration from Cookie Clicker. In the game, you click on a cookie to earn points, and you can use those points to buy upgrades that increase your click multiplier or enable auto-clicking. As you level up, your upgrades will become more powerful but also more expensive. 
-Often used by artists to create artworks or even video games.</p>
-</center>
 </div>
 </center>
 </body>

@@ -34,8 +34,10 @@ h1 {
 
 p {
   margin-top: 0;
+  margin-left: 10%;
+  margin-right: 10%;
   margin-bottom: 30px;
-  text-align: justify;
+  text-align: center;
   text-justify: inter-word;
   padding: 0 20px;
   font-size: 20px;
@@ -43,12 +45,12 @@ p {
 }
 
 .artist-icon {
-  float: left;
-  margin-left: 20px;
-  margin-right: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 20px;
   width: 100%;
-  max-width: 500px;
+  max-width:700px;
   height: auto;
 }
 
@@ -68,6 +70,11 @@ p {
   width: 100%;
   max-width: 500px;
   height: auto;
+}
+	
+hr.nav{
+  border: 1px solid #EDF0F5;
+  width: 90%
 }
 
 @media (max-width: 768px) {
@@ -103,7 +110,7 @@ p {
 <body>
 <center>
 <div class="container-fluid">
-<h1 class="text-bg-light rounded"><b> NetArt <br> 2023</b></h1>
+<h1 class="text-bg-light rounded"><b>Dat Ngo</b></h1>
 <a href="index.html">Digital Media &nbsp; &nbsp; &nbsp; &nbsp;</a>
 <a href="2ddesign.html">2D Design and Color Concept &nbsp; &nbsp; &nbsp; &nbsp;</a>
 <a href="illustration.html">Illustration &nbsp; &nbsp; &nbsp;</a>
@@ -111,18 +118,18 @@ p {
 <a href="about.html">About Me &nbsp; &nbsp; &nbsp;</a>
 <a href="statement.html"> Statement</a>
 <br>
-<br>
+<hr class="nav">
+<h1 style= "color:#EDF0F5"><b> NetArt <br> 2023</b></h1>
 </div>
-
-<img class="artist-icon rounded" src="monkey.png" alt="monke">
-
-<div class="about-me">
-	<a href="https://levidetergent.github.io/netart/"><p style="font-size: 20px;"> levidetergent.github.io/netart/</p></a>
+</center>
+<center>
+<a href="https://levidetergent.github.io/netart/"><p style="font-size: 20px;"> Click here to try</p></a>
     <p style="font-size: 20px;">A website that was created using Notepad++ and published on GitHub. 
 	It contains various gifs of monkeys, including some that have become well-known memes on the internet. 
 	On top of these gifs, there's an important message to raise awareness about the decline in monkey populations. 
 	Towards the end there is a mini game for the audience to have fun with.</p>
-</div>
+<img class="artist-icon rounded" src="monkey.png" alt="monke">
+
 </center>
 </body>
 </html>
