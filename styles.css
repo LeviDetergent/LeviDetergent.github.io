@@ -1,0 +1,148 @@
+@charset "utf-8";
+/* CSS Document */
+body h1 {
+	font-family: fantasy;
+	color: black;
+	font-size: 3rem;
+}
+
+body h2 {
+	font-family: fantasy;
+	color: aliceblue;
+	font-size: 4rem;
+	margin-top: 80px;
+}
+
+p {
+	font-family: Consolas;
+	color: black;
+	font-size: 1.5rem;
+}
+
+p2 {
+	font-family: Consolas;
+	color: aliceblue;
+	font-size: 1.5rem;
+}
+
+textarea {
+	border: 2px solid #FFFFFF;
+	background-color: white;
+	color: black;
+	overflow: auto;
+}
+
+/* Add the styles for the link */
+a {
+	font-family: Consolas;
+    color: black !important; /* Desired color */
+}
+
+/* Apply a different style when the link is hovered */
+a:hover {
+	background-color: black;
+    color: aliceblue !important; /* Change color on hover */
+}
+
+/* Change font style for the navigation bar brand */
+.navbar-brand {
+    font-family: Consolas;
+}
+
+/* Change font style for navigation links */
+.nav-link {
+    font-family: Consolas;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: black;
+    color: aliceblue; /* Adjust the color for the hover state */
+}
+
+#banner {
+    background-image: url('images/YouLookLonely(1).gif');
+    background-size: cover; /* Adjusts the image size to cover the entire element */
+	background-position: center bottom;
+	height: 50vh;
+	max-height: 100vh;
+}
+
+/* Add spacing between the banner and the about section */
+#about {
+    padding-top: 160px;
+}
+
+#about2 {
+	padding-top: 30px;
+}
+
+.container {
+    margin-bottom: 30px; /* Adjust the margin as needed */
+}
+
+/* Custom CSS for thumbnail effects */
+.thumbnail {
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+}
+
+.thumbnail:hover img {
+    transform: scale(1.25);
+	transition: transform 0.3s;
+}
+
+.category-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	background: black;
+    color: #fff;
+    padding: 10px;
+	font-family: Consolas;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.image-date {
+    position: absolute;
+    top: 60%; 
+    left: 50%;
+    transform: translateX(-50%);
+	background: black;
+    color: #fff;
+	font-family: Consolas;
+    font-size: 18px; /* Adjust the font size as needed */
+    display: none; /* Initially hidden */
+}
+
+.thumbnail:hover .category-title {
+    opacity: 1;
+}
+
+.thumbnail:hover .image-date {
+    display: block; /* Display the date on hover */
+}
+
+/* Limit the font size and width for mobile view */
+@media only screen and (max-width: 768px) { /* Adjust the max-width and breakpoint as needed */
+	body h1 {
+		font-size: 1rem;
+	}
+    body h2 {
+        font-size: 1rem; /* Adjust the font size for mobile view */
+		margin-top: 30px;
+    }
+	
+	p{
+		font-size: 0.5rem;
+	}
+	
+	p2 {
+		font-size: 0.5rem;
+	}
+	
+	
+}
