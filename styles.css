@@ -1,26 +1,26 @@
 @charset "utf-8";
 /* CSS Document */
 body h1 {
-	font-family: fantasy;
+	font-family: 'Orbitron', sans-serif;;
 	color: black;
 	font-size: 3rem;
 }
 
 body h2 {
-	font-family: fantasy;
+	font-family: 'Orbitron', sans-serif;;
 	color: aliceblue;
 	font-size: 4rem;
 	margin-top: 80px;
 }
 
 p {
-	font-family: Consolas;
+	font-family: 'Exo', sans-serif;
 	color: black;
 	font-size: 1.5rem;
 }
 
 p2 {
-	font-family: Consolas;
+	font-family: 'Exo', sans-serif;
 	color: aliceblue;
 	font-size: 1.5rem;
 }
@@ -34,7 +34,7 @@ textarea {
 
 /* Add the styles for the link */
 a {
-	font-family: Consolas;
+	font-family: 'Exo', sans-serif;
     color: black !important; /* Desired color */
 }
 
@@ -46,12 +46,12 @@ a:hover {
 
 /* Change font style for the navigation bar brand */
 .navbar-brand {
-    font-family: Consolas;
+    font-family: 'Exo', sans-serif;
 }
 
 /* Change font style for navigation links */
 .nav-link {
-    font-family: Consolas;
+    font-family: 'Exo', sans-serif;
 }
 
 .navbar-nav .nav-link:hover {
@@ -100,7 +100,7 @@ a:hover {
 	background: black;
     color: #fff;
     padding: 10px;
-	font-family: Consolas;
+	font-family: 'Exo', sans-serif;
     font-size: 20px;
     opacity: 0;
     transition: opacity 0.5s;
@@ -113,7 +113,7 @@ a:hover {
     transform: translateX(-50%);
 	background: black;
     color: #fff;
-	font-family: Consolas;
+	font-family: 'Exo', sans-serif;
     font-size: 18px; /* Adjust the font size as needed */
     display: none; /* Initially hidden */
 }
