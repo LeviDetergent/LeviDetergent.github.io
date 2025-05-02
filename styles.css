@@ -1,13 +1,17 @@
 @charset "utf-8";
 /* CSS Document */
+body {
+	background-color: black !important;
+}
+
 body h1 {
-	font-family: 'Orbitron', sans-serif;;
-	color: black;
+	font-family: 'Orbitron', sans-serif;
+	color: white;
 	font-size: 3rem;
 }
 
 body h2 {
-	font-family: 'Orbitron', sans-serif;;
+	font-family: 'Orbitron', sans-serif;
 	color: aliceblue;
 	font-size: 4rem;
 	margin-top: 80px;
@@ -15,7 +19,7 @@ body h2 {
 
 p {
 	font-family: 'Exo', sans-serif;
-	color: black;
+	color: white;
 	font-size: 1.5rem;
 }
 
@@ -35,28 +39,38 @@ textarea {
 /* Add the styles for the link */
 a {
 	font-family: 'Exo', sans-serif;
-    color: black !important; /* Desired color */
+    color: white !important; 
 }
 
 /* Apply a different style when the link is hovered */
 a:hover {
-	background-color: black;
-    color: aliceblue !important; /* Change color on hover */
+	background-color: aliceblue;
+    color: black !important; /* Change color on hover */
+}
+
+.navbar.navbar-expand-lg {
+	background-color: #121112 !important;
+    padding-top: 10px !important;  /* Adjust top padding */
+    padding-bottom: 0px !important;  /* Adjust bottom padding */
 }
 
 /* Change font style for the navigation bar brand */
 .navbar-brand {
+	color: aliceblue !important;
     font-family: 'Exo', sans-serif;
+	font-size: 22px !important;
 }
 
 /* Change font style for navigation links */
 .nav-link {
+	color: aliceblue !important;
     font-family: 'Exo', sans-serif;
+	font-size: 22px !important;
 }
 
 .navbar-nav .nav-link:hover {
-    background-color: black;
-    color: aliceblue; /* Adjust the color for the hover state */
+    background-color: aliceblue;
+    color: black !important; /* Adjust the color for the hover state */
 }
 
 #banner {
@@ -84,7 +98,13 @@ a:hover {
 .thumbnail {
     position: relative;
     overflow: hidden;
-    margin-top: 30px;
+    margin-top: 40px;
+}
+
+.thumbnail img {
+    width: 100%; /* This makes sure the image fills the container */
+    height: 400px; /* Set a uniform height */
+    object-fit: cover; /* Ensure the image fits within the given width/height without stretching */
 }
 
 .thumbnail:hover img {
@@ -127,7 +147,7 @@ a:hover {
 }
 
 /* Limit the font size and width for mobile view */
-@media only screen and (max-width: 768px) { /* Adjust the max-width and breakpoint as needed */
+@media only screen and (max-width: 768px) { 
 	body h1 {
 		font-size: 1rem;
 	}

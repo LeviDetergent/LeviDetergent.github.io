@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script language="javascript" type="text/javascript" src="../lib/p5.min.js"></script>
+  <!-- uncomment lines below to include extra p5 libraries -->
+	<!--<script language="javascript" src="../lib/p5.dom.min.js"></script>-->
+  <!--<script language="javascript" src="../lib/p5.sound.min.js"></script>-->
+  <script language="javascript" type="text/javascript" src="sketch.js"></script>
+  <!-- this line removes any default padding and style. you might only 
+    need one of these values set. -->
+  <style>
+   @font-face{font-family: emulogic; src: url('font/emulogic.ttf');}
+   body {
+  padding: 50px;
+  margin: 0;
+  background-color: #222;
+  font-family: emulogic;
+}
+
+h1 {
+  color: #FFFF00;
+  font-size: 20px;
+  text-align: center; /* Keep the title centered */
+  margin-top: 20px;
+}
+
+p {
+  text-align: center; /* Keep the paragraph centered */
+  color: #fa0;
+}
+
+.instructions {
+  color: #fff;
+  background-color: #444;
+  border: 2px solid #666;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px 0; /* Adjust the margin to move it up */
+  width: 20%; /* Set a fixed width for the instruction box */
+  max-width: 600px; /* Set a max width for larger screens */
+  text-align: left; /* Keep text aligned to the left */
+  display: inline-block; /* Ensure it's only as wide as necessary */
+}
+
+.instructions h2 {
+  color: #FFFF00;
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.instructions ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 13px;
+}
+
+.instructions ul li {
+  margin: 10px 0;
+}
+
+canvas {
+  display: block;
+  margin: 20px auto; /* Center the canvas */
+}
+
+  </style>
+</head>
+<body>
+  <h1>Make Your Own Pac-Man!</h1>
+  <!--<p>WAKAWAKAWAKAWAKAWAKAWAKAWAKAWAKA</p> -->
+
+  <!-- This div ensures that the instructions are below the canvas -->
+  <div class="instructions">
+    <h2>Instructions</h2>
+    <ul>
+      <li><strong>1</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Squares</li>
+      <li><strong>2</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Circles</li>
+      <li><strong>3</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Pac-Man</li>
+      <li><strong>4</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Ghosts</li>
+	  <li><strong>5</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Eraser</li>
+      <li><strong>[</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Decrease</li>
+      <li><strong>]</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Increase</li>
+      <li><strong>Shift</strong> - Draw straight</li>
+      <li><strong>z</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Undo</li>
+      <li><strong>r</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Redo</li>
+      <li><strong>e</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Erase</li>
+      <li><strong>p</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Save</li>
+    </ul>
+  </div>
+</body>
+</html>
