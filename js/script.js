@@ -95,7 +95,7 @@ const projects = [
         fullImageUrl: 'images/self.png',
         description: 'A self-portrait in South Park style created entirely with p5.js code. This project demonstrates the intersection of programming and visual art—using push(), translate(), rotate(), and shape functions to construct a detailed character portrait. It\'s a fun exploration of how code can be both functional and artistic.',
         tools: ['p5.js', 'Generative Art', 'Code as Art'],
-        codePreview: true
+        sourceCode: 'p5/self-portrait/self_portrait_south_park.js'
     },
     {
         id: 8,
@@ -106,7 +106,7 @@ const projects = [
         year: '2023',
         image: 'linear-gradient(135deg, #ec4899, #f43f5e)',
         imageUrl: 'thumbnails/shrek.png',
-        fullImageUrl: 'images/glitch.png',
+        fullImageUrl: ['images/glitch.png', 'images/glitch2.jpg', 'images/glitch3.jpg'],
         description: 'Taking beloved Shrek memes and adding a modern glitch aesthetic using text editors and Audacity. The Shrek franchise has some of the most iconic memes on the internet, and by applying intentional glitch effects, I give these timeless icons a contemporary digital twist while keeping their nostalgic appeal.',
         tools: ['Glitch Effects', 'Audacity', 'Digital Manipulation']
     },
@@ -148,13 +148,14 @@ const aboutTexts = [
 
 const fullAboutText = aboutTexts.join('\n\n');
 
+const artistStatement = "As a digital artist, I like to create visually engaging work that reflects the world we live in—often with a sense of humor and playfulness. Pop culture has played a huge role in shaping who I am today, and I enjoy incorporating references from games, memes, and internet culture into my art. These cultural touchstones not only inspire me but also allow me to connect with others who share similar experiences and memories.\n\nI have a background in computer science, which allows me to hand-code projects like this website and explore how technology and creativity can work hand-in-hand. I'm currently pursuing a Bachelor of Fine Arts in Digital Media Art at San José State University, where I'm constantly experimenting with new ways to merge code, design, and storytelling.\n\nMy long-term goal is to become a game designer, combining my technical skills and artistic sensibility to create fun, meaningful, and culturally relevant gaming experiences. I'm passionate about making work that feels personal, nostalgic, and entertaining, whether it's digital art, animation, or interactive projects. I strive to create pieces that leave an impression and reflect the things I genuinely love.";
+
 let hoveredProjectIndex = null;
 let scrollProgress = 0;
 let lastScrollTop = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    initTypingEffect();
-    initAboutTypingEffect();
+    initTypingEffects();
     initProjects();
     initGlitchEffects();
     initScrollEffects();
@@ -164,32 +165,30 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
 });
 
-function initTypingEffect() {
-    const el = document.getElementById('typed-text');
-    let index = 0;
-    
-    const interval = setInterval(() => {
-        if (index <= bioText.length) {
-            el.textContent = bioText.slice(0, index);
-            index++;
-        } else {
-            clearInterval(interval);
-        }
-    }, 40);
-}
+function initTypingEffects() {
+    const typingConfigs = [
+        { elementId: 'typed-text', text: bioText, speed: 40 },
+        { elementId: 'about-typed-text', text: fullAboutText, speed: 15 },
+        { elementId: 'statement-text', text: artistStatement, speed: 10 }
+    ];
 
-function initAboutTypingEffect() {
-    const el = document.getElementById('about-typed-text');
-    let index = 0;
-    
-    const interval = setInterval(() => {
-        if (index <= fullAboutText.length) {
-            el.textContent = fullAboutText.slice(0, index);
-            index++;
-        } else {
-            clearInterval(interval);
+    typingConfigs.forEach(config => {
+        const el = document.getElementById(config.elementId);
+        if (!el) {
+            console.error(`${config.elementId} element not found`);
+            return;
         }
-    }, 30);
+
+        let index = 0;
+        const interval = setInterval(() => {
+            if (index <= config.text.length) {
+                el.textContent = config.text.slice(0, index);
+                index++;
+            } else {
+                clearInterval(interval);
+            }
+        }, config.speed);
+    });
 }
 
 function initProjects() {
@@ -243,11 +242,11 @@ function initGlitchEffects() {
     
     elements.forEach(el => {
         setInterval(() => {
-            if (Math.random() > 0.85) {
+            if (Math.random() > 0.50) {
                 el.classList.add('active');
                 setTimeout(() => el.classList.remove('active'), 100);
             }
-        }, 6000 + Math.random() * 6000);
+        }, 3000 + Math.random() * 3000);
     });
 }
 
@@ -338,23 +337,24 @@ function openModal(project) {
     meta.textContent = `${project.type} • ${project.year}`;
     
     if (project.youtube) {
-        videoDiv.innerHTML = `
-            <iframe 
-                width="100%" 
-                height="315" 
-                src="https://www.youtube.com/embed/${project.youtube}"
-                title="${project.title}"
-                frameborder="0"
-                loading="lazy"
-                allowfullscreen
-            ></iframe>
-        `;
+        videoDiv.innerHTML = `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${project.youtube}" title="${project.title}" frameborder="0" loading="lazy" allowfullscreen></iframe>`;
         imageDiv.innerHTML = '';
     } else {
         videoDiv.innerHTML = '';
-        imageDiv.innerHTML = project.fullImageUrl 
-            ? `<img src="${project.fullImageUrl}" alt="${project.title}">`
-            : '';
+        imageDiv.innerHTML = '';
+        if (project.fullImageUrl) {
+            const images = Array.isArray(project.fullImageUrl) ? project.fullImageUrl : [project.fullImageUrl];
+            images.forEach((imgUrl, idx) => {
+                const img = document.createElement('img');
+                img.src = imgUrl;
+                img.alt = `${project.title} - Image ${idx + 1}`;
+                img.style.marginBottom = '1.5rem';
+                img.style.width = '100%';
+                img.style.border = '1px solid #fff';
+                img.style.display = 'block';
+                imageDiv.appendChild(img);
+            });
+        }
     }
     
     description.textContent = project.description;
