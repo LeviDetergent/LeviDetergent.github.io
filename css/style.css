@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-padding-top: 80px;
+}
+
 body {
     background: #000;
     color: #fff;
@@ -11,7 +15,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Background Grid */
 .bg-container {
     position: fixed;
     inset: 0;
@@ -41,7 +44,6 @@ body {
     z-index: 10;
 }
 
-/* Navbar */
 .navbar {
     position: fixed;
     top: 0;
@@ -52,6 +54,7 @@ body {
     border-bottom: 1px solid rgba(0, 212, 255, 0.3);
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(4px);
+    transition: transform 0.3s ease-in-out;
 }
 
 .nav-content {
@@ -84,22 +87,37 @@ body {
 }
 
 .nav-links a:last-child:hover {
-    color: #ff006e;
+    color: #ff0000;
 }
 
-/* Top Section */
 .top {
-    padding-top: 8rem;
     padding-bottom: 5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     min-height: 100vh;
     display: flex;
     align-items: center;
+    position: relative;
+}
+
+.top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background-image: url('../images/joi.gif');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .top-content {
     max-width: 80rem;
+    position: relative;
+    z-index: 2;
 }
 
 .top-title {
@@ -108,16 +126,19 @@ body {
     line-height: 1.1;
     margin-bottom: 5rem;
     letter-spacing: -0.05em;
+    position: relative;
+    z-index: 10;
 }
 
 .top-bio {
-    font-size: 1.125rem;
-    color: #9ca3af;
     max-width: 32rem;
     margin-bottom: 2rem;
-    line-height: 1.75;
+    padding: 1rem;
     font-size: 0.875rem;
-    min-height: 6rem;
+    line-height: 1.75;
+    color: #9ca3af;
+    background: rgba(0, 0, 0, 0.6);
+    display: fit-content;
 }
 
 .cursor {
@@ -141,12 +162,12 @@ body {
     border: 2px solid #00d4ff;
     color: #00d4ff;
     text-decoration: none;
-    transition: background 0.3s;
     font-size: 0.875rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     width: fit-content;
+    transition: background 0.3s;
 }
 
 .btn-primary:hover {
@@ -158,7 +179,6 @@ body {
     color: #4b5563;
 }
 
-/* Projects Section */
 .projects {
     padding: 5rem 1.5rem;
 }
@@ -196,8 +216,8 @@ body {
 .project-gradient {
     width: 100%;
     height: 100%;
-    transition: opacity 0.3s;
     opacity: 0.7;
+    transition: opacity 0.3s;
 }
 
 .project-card:hover .project-gradient {
@@ -264,9 +284,8 @@ body {
 
 .project-info {
     padding: 1rem;
-    border-bottom: 2px solid;
-    border-left: 2px solid;
-    border-right: 2px solid;
+    border: 2px solid;
+    border-top: none;
     transition: all 0.3s;
 }
 
@@ -288,7 +307,6 @@ body {
     color: #4b5563;
 }
 
-/* About Section */
 .about {
     padding: 5rem 1.5rem;
     border-top: 1px solid #1f2937;
@@ -313,7 +331,7 @@ body {
 
 .about-text p {
     margin: 0;
-    white-space: pre-wrap;
+    white-space: pre-line;
 }
 
 .info-section {
@@ -338,15 +356,9 @@ body {
     position: relative;
     overflow: hidden;
     padding: 0.25rem 0;
-    transition: none;
-    will-change: opacity, transform;
     opacity: 1;
     transform: translateX(0);
-}
-
-.info-item.animated {
-    opacity: 0;
-    transform: translateX(20px);
+    will-change: opacity, transform;
 }
 
 .info-item::after {
@@ -356,7 +368,7 @@ body {
     left: 0;
     height: 2px;
     width: 0;
-    background: linear-gradient(90deg, #00d4ff, #ff006e);
+    background: linear-gradient(90deg, #00ffff, #ff0000);
     transition: width 0.3s;
 }
 
@@ -365,13 +377,12 @@ body {
 }
 
 .info-item.gradient-text {
-    background: linear-gradient(90deg, #00d4ff, #ff006e);
+    background: linear-gradient(90deg, #00ffff, #ff0000);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-/* Footer */
 .footer {
     padding: 2rem 1.5rem;
     border-top: 1px solid #1f2937;
@@ -380,7 +391,6 @@ body {
     color: #4b5563;
 }
 
-/* Modal */
 .modal {
     position: fixed;
     inset: 0;
@@ -398,12 +408,22 @@ body {
 
 .modal-content {
     background: #000;
-    border: 2px solid rgba(0, 212, 255, 0.5);
+    border: 2px solid #fff;
     max-width: 42rem;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
     padding: 2rem;
+    position: relative;
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid #fff;
+    pointer-events: none;
+    animation: glitchCut 0.15s infinite;
 }
 
 .modal-close {
@@ -418,39 +438,83 @@ body {
 }
 
 .modal-close:hover {
-    color: #00d4ff;
+    color: #ff0000;
 }
 
 .modal-title {
     font-size: 2.25rem;
     font-weight: 900;
     margin-bottom: 0.5rem;
+    color: #fff !important;
+    position: relative;
+    animation: glitchTextCut 0.2s infinite;
 }
 
-.modal-meta {
-    font-size: 0.875rem;
-    color: #6b7280;
+.modal-title::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #fff;
+    opacity: 0.6;
+    animation: glitchTextCut2 0.2s infinite;
+    z-index: -1;
+}
+
+.modal-meta,
+.modal-description,
+.modal-tools {
+    border: 1px solid #fff;
+    padding: 0.5rem;
+    position: relative;
     margin-bottom: 1.5rem;
+    color: #fff;
 }
 
-.modal-video {
-    margin-bottom: 1.5rem;
-}
-
-.modal-video iframe {
-    width: 100%;
-    height: 315px;
-    border: 1px solid #374151;
+.modal-meta::after,
+.modal-description::after,
+.modal-tools::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid #fff;
+    pointer-events: none;
+    animation: textBoxGlitch 0.15s infinite;
 }
 
 .modal-description {
-    color: #d1d5db;
-    margin-bottom: 1.5rem;
-    line-height: 1.75;
+    padding: 1rem;
 }
 
 .modal-tools {
+    padding: 1rem;
+}
+
+.modal-tools .info-label {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+
+.modal-image {
     margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.modal-image img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #fff;
+    display: block;
+}
+
+.modal-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid #fff;
+    pointer-events: none;
+    animation: textBoxGlitch 0.15s infinite;
 }
 
 .tools-tags {
@@ -462,8 +526,9 @@ body {
 .tool-tag {
     font-size: 0.75rem;
     padding: 0.25rem 0.75rem;
-    border: 1px solid rgba(0, 212, 255, 0.5);
-    color: #00d4ff;
+    border: 1px solid #fff;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
 .modal-links {
@@ -475,33 +540,28 @@ body {
 .modal-link {
     display: block;
     padding: 0.5rem 1rem;
-    border: 1px solid;
+    border: 1px solid #fff;
     text-decoration: none;
     font-size: 0.875rem;
-    transition: all 0.3s;
     font-family: 'Courier New', monospace;
+    color: #fff;
+    position: relative;
+    transition: all 0.3s;
 }
 
-.modal-link.primary {
-    border-color: #00d4ff;
-    color: #00d4ff;
+.modal-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid #fff;
+    pointer-events: none;
+    animation: textBoxGlitch 0.15s infinite;
 }
 
-.modal-link.primary:hover {
-    background: rgba(0, 212, 255, 0.1);
+.modal-link:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
-.modal-link.secondary {
-    border-color: #6b7280;
-    color: #9ca3af;
-}
-
-.modal-link.secondary:hover {
-    border-color: #d1d5db;
-    color: #d1d5db;
-}
-
-/* Glitch Effect */
 .glitch-text {
     position: relative;
     display: inline-block;
@@ -519,41 +579,102 @@ body {
 
 .glitch-text.active::before,
 .glitch-text.glitch-always::before {
-    left: 4px;
-    top: 4px;
-    color: #00d4ff;
-    opacity: 0.7;
-    animation: glitchShift 0.2s infinite;
+    left: 3px;
+    top: 3px;
+    color: #00ffff;
+    opacity: 0.9;
+    animation: glitchShift 0.12s infinite;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.3);
 }
 
 .glitch-text.active::after,
 .glitch-text.glitch-always::after {
-    left: 0;
-    top: 0;
-    color: #ff006e;
-    opacity: 0.7;
-    animation: glitchShift2 0.2s infinite;
+    left: -3px;
+    top: -3px;
+    color: #ff0000;
+    opacity: 0.9;
+    animation: glitchShift2 0.12s infinite;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.5), 0 0 30px rgba(255, 0, 0, 0.3);
+}
+
+@keyframes glitchTextCut {
+    0%, 30%, 60%, 100% { clip-path: inset(0 0 0 0); }
+    15% { clip-path: inset(20% 0 70% 0); }
+    45% { clip-path: inset(60% 0 25% 0); }
+    75% { clip-path: inset(40% 0 45% 0); }
+}
+
+@keyframes glitchTextCut2 {
+    0%, 30%, 60%, 100% { clip-path: inset(0 0 0 0); }
+    15% { clip-path: inset(55% 0 30% 0); }
+    45% { clip-path: inset(15% 0 75% 0); }
+    75% { clip-path: inset(70% 0 20% 0); }
+}
+
+@keyframes textBoxGlitch {
+    0%, 25%, 50%, 75%, 100% { 
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+    }
+    12% { 
+        clip-path: inset(5% 0 80% 0);
+        opacity: 0.7;
+    }
+    37% { 
+        clip-path: inset(50% 0 30% 0);
+        opacity: 0.6;
+    }
+    62% { 
+        clip-path: inset(30% 0 55% 0);
+        opacity: 0.7;
+    }
+}
+
+@keyframes glitchCut {
+    0%, 20%, 50%, 80%, 100% { 
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+    }
+    10% { 
+        clip-path: inset(10% 0 85% 0);
+        opacity: 0.7;
+    }
+    30% { 
+        clip-path: inset(60% 0 20% 0);
+        opacity: 0.6;
+    }
+    65% { 
+        clip-path: inset(35% 0 50% 0);
+        opacity: 0.7;
+    }
 }
 
 @keyframes glitchShift {
-    0% { clip-path: inset(0 0 0 0); transform: translate(0); }
-    20% { clip-path: inset(0 0 65% 0); transform: translate(2px, 2px); }
-    40% { clip-path: inset(28% 0 0 0); transform: translate(-2px, -2px); }
-    60% { clip-path: inset(44% 0 21% 0); transform: translate(1px, -1px); }
-    80% { clip-path: inset(12% 0 61% 0); transform: translate(-1px, 1px); }
-    100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+    0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+    10% { clip-path: inset(5% 0 80% 0); transform: translate(3px, -2px); }
+    20% { clip-path: inset(0 0 60% 0); transform: translate(1px, 3px); }
+    30% { clip-path: inset(20% 0 0 0); transform: translate(-2px, 1px); }
+    40% { clip-path: inset(0 0 40% 0); transform: translate(2px, -3px); }
+    50% { clip-path: inset(60% 0 10% 0); transform: translate(-1px, 2px); }
+    60% { clip-path: inset(0 0 20% 0); transform: translate(3px, 1px); }
+    70% { clip-path: inset(40% 0 5% 0); transform: translate(-2px, -1px); }
+    80% { clip-path: inset(0 0 75% 0); transform: translate(1px, -2px); }
+    90% { clip-path: inset(10% 0 30% 0); transform: translate(-3px, 2px); }
 }
 
 @keyframes glitchShift2 {
-    0% { clip-path: inset(0 0 0 0); transform: translate(0); }
-    20% { clip-path: inset(60% 0 0 0); transform: translate(-2px, -2px); }
-    40% { clip-path: inset(0 0 32% 0); transform: translate(2px, 2px); }
-    60% { clip-path: inset(8% 0 64% 0); transform: translate(-1px, 1px); }
-    80% { clip-path: inset(70% 0 9% 0); transform: translate(1px, -1px); }
-    100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+    0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+    10% { clip-path: inset(75% 0 5% 0); transform: translate(-3px, 2px); }
+    20% { clip-path: inset(30% 0 0 0); transform: translate(-1px, -3px); }
+    30% { clip-path: inset(0 0 50% 0); transform: translate(2px, -1px); }
+    40% { clip-path: inset(50% 0 0 0); transform: translate(-2px, 3px); }
+    50% { clip-path: inset(0 0 15% 0); transform: translate(1px, -2px); }
+    60% { clip-path: inset(20% 0 40% 0); transform: translate(-3px, -1px); }
+    70% { clip-path: inset(0 0 60% 0); transform: translate(2px, 2px); }
+    80% { clip-path: inset(35% 0 10% 0); transform: translate(-1px, 1px); }
+    90% { clip-path: inset(0 0 25% 0); transform: translate(3px, -2px); }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -563,10 +684,7 @@ body {
         font-size: 3.5rem;
     }
     
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    
+    .projects-grid,
     .about-grid {
         grid-template-columns: 1fr;
     }
