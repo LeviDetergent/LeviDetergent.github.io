@@ -3,69 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dat Ngo's Portfolio</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Exo&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <title>DAT NGO - Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Dat Ngo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="dma.html">Digital Media</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="statement.html">Statement</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLScer1QACbys5m0UayKnjQO15ACjWIEJwMkPAa0VFShp6ZStUw/viewform?usp=sf_link" target="_blank">Contact</a>
-                    </li>
-                </ul>
+    <div class="bg-container">
+        <div class="grid-bg"></div>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="logo">
+                    <span class="glitch-text" data-text="DAT NGO">DAT NGO</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#work">work</a>
+                    <a href="#about">about</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScer1QACbys5m0UayKnjQO15ACjWIEJwMkPAa0VFShp6ZStUw/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">contact</a>
+                </div>
             </div>
-        </div>
-    </nav>
-    <header class="jumbotron">
-		<section id="banner">
-  			 <div class="container">
-     			  <div class="row">
-         			  <div class="col-md-12 text-center">
-             			  <h2 class="bg-black text-white d-inline-block px-3 py-2">Welcome to My Portfolio</h2>
-          				  <p class="bg-black text-white d-inline-block px-3 py-2 mt-2">Explore my digital artwork and creations</p>
-           			  </div>
-       			 </div>
-   			 </div>
-		</section>
-    </header>
-    <section id="about">
-    <div class="container">
-        <div class="row">
-            <!-- Image on the left (col-md-6) -->
-            <div class="col-md-6">
-                <img src="images/levi.jpg" alt="Artist Image" class="img-fluid">
-            </div>
-            <!-- Text block on the right (col-md-6) -->
-            <div class="col-md-6">
-                <h1>About the Artist</h1>
-                <p>
+        </nav>
+
+        <!-- Top Section -->
+        <section class="top">
+            <div class="top-content">
+                <h1 class="top-title">
+                    <span class="glitch-text glitch-always" data-text="DAT NGO">DAT NGO</span>
+                </h1>
+                <p class="top-bio">
+                    <span id="typed-text"></span>
+                    <span class="cursor">_</span>
                 </p>
-                <p data-start="174" data-end="629">Hello there! My name is Dat Ngo, and I&rsquo;m currently pursuing a Bachelor of Fine Arts in Digital Media Art at San José State University. My work is heavily influenced by pop culture, especially internet culture, video games, and memes, which have shaped my identity and continue to inspire my creativity. I enjoy blending humor, nostalgia, and digital aesthetics to create work that feels fun, personal, and culturally in tune with the world around me.</p>
-                <p data-start="631" data-end="1233">I primarily use Adobe Photoshop for illustration, and I also have experience with Adobe Premiere Pro, After Effects, Blender, and Substance Painter. I first got into digital art during my junior year of high school after discovering a Digital Media class. Even though I started later than some, I&rsquo;ve been driven by a strong passion for learning and growing as an artist. Moving forward, I hope to keep expanding my skills across different mediums and create projects that not only entertain but resonate with people who share similar passions.</p>
-                <p></p>
+                
+                <div class="top-actions">
+                    <a href="#work" class="btn-primary">see work</a>
+                    <p class="scroll-hint">scroll or click above ↓</p>
+                </div>
             </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="work" class="projects">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="glitch-text" data-text="projects">projects</span>
+                </h2>
+
+                <div class="projects-grid" id="projects-grid">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container-about">
+                <h2 class="section-title">
+                    about <span class="glitch-text" data-text="me">me</span>
+                </h2>
+
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            <span id="about-typed-text"></span><span class="cursor">_</span>
+                        </p>
+                    </div>
+
+                    <div class="about-info">
+                        <div class="info-section">
+                            <p class="info-label">TOOLS</p>
+                            <div class="info-list" id="tools-list">
+                                <div class="info-item" data-index="0">> p5.js / JavaScript</div>
+                                <div class="info-item" data-index="1">> Blender / Substance Painter</div>
+                                <div class="info-item" data-index="2">> Photoshop / Illustrator</div>
+                                <div class="info-item" data-index="3">> After Effects / Premiere Pro</div>
+                                <div class="info-item" data-index="4">> HTML / CSS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2025 dat ngo</p>
+        </footer>
+    </div>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">[ close ]</button>
+            
+            <h2 class="modal-title" id="modal-title"></h2>
+            <p class="modal-meta" id="modal-meta"></p>
+            
+            <div id="modal-video" class="modal-video"></div>
+            
+            <p class="modal-description" id="modal-description"></p>
+            
+            <div class="modal-tools">
+                <p class="info-label">TOOLS USED</p>
+                <div class="tools-tags" id="modal-tools"></div>
+            </div>
+            
+            <div class="modal-links" id="modal-links"></div>
         </div>
     </div>
-</section>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
