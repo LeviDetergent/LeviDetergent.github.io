@@ -7,17 +7,24 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Background grid -->
     <div class="bg-container">
         <div class="grid-bg"></div>
     </div>
 
     <div class="content-wrapper">
+        <!-- Navigation -->
         <nav class="navbar">
             <div class="nav-content">
                 <div class="logo">
                     <span class="glitch-text" data-text="DAT NGO">DAT NGO</span>
                 </div>
-                <div class="nav-links">
+                <button class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-links" id="nav-links">
                     <a href="#work" data-text="work">work</a>
                     <a href="#about" data-text="about">about</a>
                     <a href="#statement" data-text="statement">statement</a>
@@ -26,6 +33,7 @@
             </div>
         </nav>
 
+        <!-- Hero section -->
         <section class="top">
             <div class="top-content">
                 <h1 class="top-title">
@@ -43,6 +51,7 @@
             </div>
         </section>
 
+        <!-- Projects -->
         <section id="work" class="projects">
             <div class="container">
                 <h2 class="section-title">
@@ -52,6 +61,7 @@
             </div>
         </section>
 
+        <!-- About section -->
         <section id="about" class="about">
             <div class="container-about">
                 <h2 class="section-title">
@@ -81,6 +91,7 @@
             </div>
         </section>
 
+        <!-- Artist statement -->
         <section id="statement" class="artist-statement">
             <div class="container-about">
                 <h2 class="section-title">
@@ -96,16 +107,18 @@
             </div>
         </section>
 
+        <!-- Footer -->
         <footer class="footer">
             <p>© 2025 dat ngo</p>
         </footer>
     </div>
 
+    <!-- Project modal -->
     <div id="project-modal" class="modal">
         <div class="modal-content">
             <button class="modal-close">[ close ]</button>
             
-            <h2 class="modal-title" id="modal-title"></h2>
+            <h2 class="modal-title glitch-text" id="modal-title"></h2>
             <p class="modal-meta" id="modal-meta"></p>
             
             <div id="modal-video" class="modal-video"></div>

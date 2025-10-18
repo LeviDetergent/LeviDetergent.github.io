@@ -155,43 +155,46 @@ let scrollProgress = 0;
 let lastScrollTop = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    initTypingEffects();
-    initProjects();
-    initGlitchEffects();
-    initScrollEffects();
-    initModal();
-    initNavbar();
-    initToolHover();
-    initSmoothScroll();
+    setupTyping();
+    setupProjects();
+    setupGlitches();
+    setupScrolling();
+    setupModal();
+    setupNavbar();
+    setupToolHover();
+    setupSmoothScroll();
+    setupMobileMenu();
 });
 
-function initTypingEffects() {
-    const typingConfigs = [
+// Typing effect - char by char
+function setupTyping() {
+    const typingSetups = [
         { elementId: 'typed-text', text: bioText, speed: 40 },
         { elementId: 'about-typed-text', text: fullAboutText, speed: 15 },
         { elementId: 'statement-text', text: artistStatement, speed: 10 }
     ];
 
-    typingConfigs.forEach(config => {
+    typingSetups.forEach(config => {
         const el = document.getElementById(config.elementId);
         if (!el) {
             console.error(`${config.elementId} element not found`);
             return;
         }
 
-        let index = 0;
-        const interval = setInterval(() => {
-            if (index <= config.text.length) {
-                el.textContent = config.text.slice(0, index);
-                index++;
+        let charIndex = 0;
+        const typeInterval = setInterval(() => {
+            if (charIndex <= config.text.length) {
+                el.textContent = config.text.slice(0, charIndex);
+                charIndex++;
             } else {
-                clearInterval(interval);
+                clearInterval(typeInterval);
             }
         }, config.speed);
     });
 }
 
-function initProjects() {
+// Build project cards
+function setupProjects() {
     const grid = document.getElementById('projects-grid');
     
     projects.forEach((project, idx) => {
@@ -224,6 +227,7 @@ function initProjects() {
         `;
         
         card.addEventListener('click', () => openModal(project));
+        
         card.addEventListener('mouseenter', () => {
             hoveredProjectIndex = idx;
             card.querySelector('.glitch-text').classList.add('active');
@@ -237,10 +241,11 @@ function initProjects() {
     });
 }
 
-function initGlitchEffects() {
-    const elements = document.querySelectorAll('.glitch-text:not(.glitch-always)');
+// Random glitch effects on text
+function setupGlitches() {
+    const glitchElements = document.querySelectorAll('.glitch-text:not(.glitch-always)');
     
-    elements.forEach(el => {
+    glitchElements.forEach(el => {
         setInterval(() => {
             if (Math.random() > 0.50) {
                 el.classList.add('active');
@@ -250,13 +255,14 @@ function initGlitchEffects() {
     });
 }
 
-function initScrollEffects() {
-    let ticking = false;
+// Scroll animation for tools list
+function setupScrolling() {
+    let isTicking = false;
     const items = document.querySelectorAll('.info-item');
     const aboutSection = document.getElementById('about');
-    const shouldAnimate = window.innerWidth > 768;
+    const isDesktop = window.innerWidth > 768;
     
-    if (!shouldAnimate) return;
+    if (!isDesktop) return;
     
     items.forEach(item => {
         item.style.opacity = '0';
@@ -264,23 +270,24 @@ function initScrollEffects() {
     });
     
     window.addEventListener('scroll', () => {
-        if (!ticking) {
+        if (!isTicking) {
             requestAnimationFrame(() => {
                 const rect = aboutSection.getBoundingClientRect();
                 const newProgress = Math.max(0, Math.min(1, 1 - rect.top / window.innerHeight));
                 
                 if (Math.abs(newProgress - scrollProgress) > 0.01) {
                     scrollProgress = newProgress;
-                    updateAboutAnimations(items);
+                    updateToolsAnimation(items);
                 }
-                ticking = false;
+                isTicking = false;
             });
-            ticking = true;
+            isTicking = true;
         }
     }, { passive: true });
 }
 
-function updateAboutAnimations(items) {
+// Update tools position based on scroll
+function updateToolsAnimation(items) {
     items.forEach(item => {
         const idx = parseInt(item.dataset.index);
         const opacity = Math.min(1, Math.max(0, scrollProgress * 3 - idx * 0.25));
@@ -291,7 +298,8 @@ function updateAboutAnimations(items) {
     });
 }
 
-function initNavbar() {
+// Hide navbar on scroll down
+function setupNavbar() {
     const navbar = document.querySelector('.navbar');
     
     window.addEventListener('scroll', () => {
@@ -307,19 +315,23 @@ function initNavbar() {
     }, { passive: true });
 }
 
-function initModal() {
+// Modal handlers
+function setupModal() {
     const modal = document.getElementById('project-modal');
     const closeBtn = modal.querySelector('.modal-close');
     
     closeBtn.addEventListener('click', closeModal);
+    
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
     });
+    
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
     });
 }
 
+// Fill and show project modal
 function openModal(project) {
     const modal = document.getElementById('project-modal');
     const title = document.getElementById('modal-title');
@@ -333,6 +345,7 @@ function openModal(project) {
     document.body.style.overflow = 'hidden';
     
     title.textContent = project.title;
+    title.setAttribute('data-text', project.title);
     title.style.color = project.colors[0];
     meta.textContent = `${project.type} • ${project.year}`;
     
@@ -343,8 +356,8 @@ function openModal(project) {
         videoDiv.innerHTML = '';
         imageDiv.innerHTML = '';
         if (project.fullImageUrl) {
-            const images = Array.isArray(project.fullImageUrl) ? project.fullImageUrl : [project.fullImageUrl];
-            images.forEach((imgUrl, idx) => {
+            const imgList = Array.isArray(project.fullImageUrl) ? project.fullImageUrl : [project.fullImageUrl];
+            imgList.forEach((imgUrl, idx) => {
                 const img = document.createElement('img');
                 img.src = imgUrl;
                 img.alt = `${project.title} - Image ${idx + 1}`;
@@ -399,23 +412,53 @@ function closeModal() {
     document.body.style.overflow = '';
 }
 
-function initToolHover() {
-    const items = document.querySelectorAll('#tools-list .info-item');
+function setupToolHover() {
+    const toolItems = document.querySelectorAll('#tools-list .info-item');
     
-    items.forEach(item => {
+    toolItems.forEach(item => {
         item.addEventListener('mouseenter', () => item.classList.add('gradient-text'));
         item.addEventListener('mouseleave', () => item.classList.remove('gradient-text'));
     });
 }
 
-function initSmoothScroll() {
+function setupSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             const href = anchor.getAttribute('href');
             if (href !== '#' && document.querySelector(href)) {
                 e.preventDefault();
                 document.querySelector(href).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                const menu = document.getElementById('nav-links');
+                const toggle = document.getElementById('menu-toggle');
+                if (menu && toggle && menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                    toggle.classList.remove('active');
+                }
             }
+        });
+    });
+}
+
+function setupMobileMenu() {
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('nav-links');
+    
+    if (!toggle || !menu) {
+        console.error('Menu elements not found');
+        return;
+    }
+    
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menu.classList.toggle('active');
+        toggle.classList.toggle('active');
+    });
+    
+    menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.remove('active');
+            toggle.classList.remove('active');
         });
     });
 }
